@@ -3,6 +3,7 @@ layout: archive
 title: "ITAMO"
 permalink: /itamo/
 author_profile: true
+---
 
 {% include base_path %}
 
