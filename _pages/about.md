@@ -35,7 +35,9 @@ Anno: <select name='anno_riferimento' id='anno_riferimento'>
 <option value='2019'>2019</option>
 </select>
   	
-  	Distretto: <select name='distretto' id='distretto'><option selected value=''>Scegli Distretto</option><option value='2'>Agrigento</option>
+Distretto: <select name='distretto' id='distretto'>
+<option selected value=''>Scegli Distretto</option>
+<option value='2'>Agrigento</option>
 <option value='3'>Alessandria</option>
 <option value='4'>Ancona</option>
 <option value='6'>Aosta</option>
