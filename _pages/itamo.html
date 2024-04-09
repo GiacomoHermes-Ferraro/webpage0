@@ -45,6 +45,8 @@ author_profile: true
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca distretti...">
 
+
+
 <script>
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;
@@ -65,6 +67,13 @@ function myFunction() {
   }
 }
 </script>
+
+<select class="filter" data-field="Anno">
+  <option value="2023">2023</option>
+  <option value="2022">2022</option>
+  <option value="2021">2021</option>
+  <option value="2020">2020</option>
+</select>
 
 <table id="myTable">
     <tr class="header">
