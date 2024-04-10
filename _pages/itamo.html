@@ -8,110 +8,31 @@ author_profile: true
 {% include base_path %}
 
 <p>In questa pagina sono presenti statistiche e documenti relativi alle Olimat (Olimpiadi Italiane di Matematica) per l'uso di studenti e responsabili distrettuali</p>
-<style>
-#myInput {
-  background-image: url('https://www.w3schools.com/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-}
-
-#myTable {
-  border-collapse: collapse; /* Collapse borders */
-  width: 100%; /* Full-width */
-  border: 1px solid #ddd; /* Add a grey border */
-  font-size: 18px; /* Increase font-size */
-}
-
-#myTable th, #myTable td {
-  text-align: left; /* Left-align text */
-  padding: 12px; /* Add padding */
-}
-
-#myTable tr {
-  /* Add a bottom border to all table rows */
-  border-bottom: 1px solid #ddd;
-}
-
-#myTable tr.header, #myTable tr:hover {
-  /* Add a grey background color to the table header and on hover */
-  background-color: #f1f1f1;
-}
-</style>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca distretti...">
-
-
-
 <script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[11];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+    document.getElementById('searchInput').addEventListener('input', function() {
+        let searchText = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#dataTable tbody tr');
+
+        rows.forEach(row => {
+            let cells = row.querySelectorAll('td');
+            let found = false;
+            cells.forEach(cell => {
+                if (cell.textContent.toLowerCase().includes(searchText)) {
+                    found = true;
+                }
+            });
+            if (found) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
 </script>
 
-<script>
-  const
-  table = document.querySelector('.filter-table'),
-  filterState = {};
+<input type="text" id="searchInput" placeholder="Search...">
 
-const dataFromRow = (row, headers) =>
-  Object.fromEntries([...row.querySelectorAll('td')]
-    .map((td, index) => [headers[index], td.textContent]));
-
-const matchesCriteria = (rowData, filters) =>
-  filters.every(([key, value]) => rowData[key] === value);
-
-const refresh = () => {
-  const
-    headers = [...table.querySelectorAll('thead th')].map(th => th.textContent),
-    filters = Object.entries(filterState),
-    showAll = filters.length === 0;
-  table.querySelectorAll('tbody tr').forEach(row => {
-    const show = showAll || matchesCriteria(dataFromRow(row, headers), filters);
-    row.classList.toggle('hidden-row', !show);
-  });
-};
-
-const handleFilterChange = (e) => {
-  const
-    field = e.target.dataset.field,
-    value = e.target.value;
-  if (value) { filterState[field] = value; }
-  else { delete filterState[field]; }
-  refresh();
-};
-
-document.querySelectorAll('.filter').forEach(filter =>
-  filter.addEventListener('change', handleFilterChange));
-</script>
-
-Anno:<select class="filter" data-field="Anno">
-  <option value="2023">2023</option>
-  <option value="2022">2022</option>
-  <option value="2021">2021</option>
-  <option value="2020">2020</option>
-</select>
-
-<table id="myTable">
+<table id="dataTable">
     <tr class="header">
         <th>Cognome</th>
         <th>Nome</th>
