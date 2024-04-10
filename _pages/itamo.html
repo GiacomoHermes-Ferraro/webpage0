@@ -17,13 +17,8 @@ author_profile: true
         const searchText = this.value.trim().toLowerCase();
 
         tableRows.forEach(row => {
-            let found = false;
-            row.querySelectorAll('td').forEach(cell => {
-                if (cell.textContent.trim().toLowerCase().includes(searchText)) {
-                    found = true;
-                }
-            });
-            if (found) {
+            const rowText = row.textContent.trim().toLowerCase();
+            if (rowText.includes(searchText)) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
