@@ -4894,19 +4894,39 @@ author_profile: true
       const table = document.createElement('table');
       table.innerHTML = `
         <tr>
-          <th>Surname</th>
-          <th>Name</th>
-          <th>District</th>
-          <th>Year</th>
+          <th>Cognome</th>
+          <th>Nome</th>
+          <th>P1</th>
+          <th>P2</th>
+          <th>P3</th>
+          <th>P4</th>
+          <th>P5</th>
+          <th>P6</th>
+          <th>Totale</th>
+          <th>Medaglia</th>
+          <th>Classe</th>
+          <th>Distretto</th>
+          <th>Totale pesato</th>
+          <th>Punti distretto</th>
         </tr>
       `;
       results.forEach(entry => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>${entry.Surname}</td>
-          <td>${entry.Name}</td>
-          <td>${entry.District}</td>
-          <td>${entry.Year}</td>
+          <td>${entry.Cognome}</td>
+          <td>${entry.Nome}</td>
+          <td>${entry.P1}</td>
+          <td>${entry.P2}</td>`
+          <td>${entry.P3}</td>
+          <td>${entry.P4}</td>
+          <td>${entry.P5}</td>
+          <td>${entry.P6}</td>`
+          <td>${entry.Totale}</td>
+          <td>${entry.Medaglia}</td>
+          <td>${entry.Classe}</td>
+          <td>${entry.Distretto}</td>`
+          <td>${entry.Totale pesato}</td>
+          <td>${entry.Punti distretto}</td>
         `;
         table.appendChild(row);
       });
