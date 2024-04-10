@@ -9,6 +9,7 @@ author_profile: true
 
 <p>In questa pagina sono presenti statistiche e documenti relativi alle Olimat (Olimpiadi Italiane di Matematica) per l'uso di studenti e responsabili distrettuali</p>
 <script>
+    // JavaScript for table search
     const searchInput = document.getElementById('searchInput');
     const tableRows = document.querySelectorAll('#dataTable tbody tr');
 
@@ -16,8 +17,13 @@ author_profile: true
         const searchText = this.value.trim().toLowerCase();
 
         tableRows.forEach(row => {
-            const rowData = row.textContent.trim().toLowerCase();
-            if (rowData.includes(searchText)) {
+            let found = false;
+            row.querySelectorAll('td').forEach(cell => {
+                if (cell.textContent.trim().toLowerCase().includes(searchText)) {
+                    found = true;
+                }
+            });
+            if (found) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
