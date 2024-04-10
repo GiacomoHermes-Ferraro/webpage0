@@ -22,10 +22,19 @@ author_profile: true
   <option value="2020">2020</option>
 </select>
 
+<label for="district-select">Select District:</label>
+<select id="district-select">
+  <option value="all">All</option>
+  <option value="District 1">District 1</option>
+  <option value="District 2">District 2</option>
+  <!-- Add more districts here -->
+</select>
+
 <table id="data-table">
   <thead>
     <tr>
       <th>Anno</th>
+      <th>Distretto</th>
       <!-- Add other headers here -->
       <th>Other Header 1</th>
       <th>Other Header 2</th>
@@ -34,11 +43,13 @@ author_profile: true
   <tbody>
     <tr>
       <td>2023</td>
+      <td>District 1</td>
       <td>Data 1</td>
       <td>Data 2</td>
     </tr>
     <tr>
       <td>2022</td>
+      <td>District 2</td>
       <td>Data 3</td>
       <td>Data 4</td>
     </tr>
@@ -47,19 +58,24 @@ author_profile: true
 </table>
 
 <script>
-document.getElementById('year-select').addEventListener('change', function() {
-  var year = this.value;
+document.getElementById('year-select').addEventListener('change', filterTable);
+document.getElementById('district-select').addEventListener('change', filterTable);
+
+function filterTable() {
+  var selectedYear = document.getElementById('year-select').value;
+  var selectedDistrict = document.getElementById('district-select').value;
   var rows = document.querySelectorAll('#data-table tbody tr');
 
   rows.forEach(function(row) {
-    var anno = row.querySelector('td:first-child').textContent;
-    if (year === 'all' || anno === year) {
+    var anno = row.querySelector('td:nth-child(1)').textContent;
+    var district = row.querySelector('td:nth-child(2)').textContent;
+    if ((selectedYear === 'all' || anno === selectedYear) && (selectedDistrict === 'all' || district === selectedDistrict)) {
       row.style.display = '';
     } else {
       row.style.display = 'none';
     }
   });
-});
+}
 </script>
 
 </body>
