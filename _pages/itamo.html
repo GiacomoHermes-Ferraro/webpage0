@@ -8,28 +8,139 @@ author_profile: true
 {% include base_path %}
 
 <p>In questa pagina sono presenti statistiche e documenti relativi alle Olimat (Olimpiadi Italiane di Matematica) per l'uso di studenti e responsabili distrettuali</p>
+<body>
+
+<label for="year-select">Select Year:</label>
+<select id="year-select">
+  <option value="all">Tutti</option>
+  <option value="2023">2023</option>
+  <option value="2022">2022</option>
+  <option value="2021">2021</option>
+  <option value="2020">2020</option>
+</select>
+
+<label for="district-select">Seleziona Distretto:</label>
+<select id="district-select">
+  <option value="all">Tutti</option>
+  <!-- List of Italian provinces -->
+  <option value="Agrigento">Agrigento</option>
+  <option value="Alessandria">Alessandria</option>
+  <option value="Ancona">Ancona</option>
+  <option value="Aosta">Aosta</option>
+  <option value="Arezzo">Arezzo</option>
+  <option value="Ascoli Piceno, Fermo">Ascoli Piceno, Fermo</option>
+  <option value="Asti">Asti</option>
+  <option value="Avellino">Avellino</option>
+  <option value="Bari">Bari</option>
+  <option value="Belluno">Belluno</option>
+  <option value="Benevento">Benevento</option>
+  <option value="Bergamo">Bergamo</option>
+  <option value="Biella, Vercelli">Biella, Vercelli</option>
+  <option value="Bologna">Bologna</option>
+  <option value="Bolzano">Bolzano</option>
+  <option value="Brescia">Brescia</option>
+  <option value="Brindisi, Taranto">Brindisi, Taranto</option>
+  <option value="Cagliari">Cagliari</option>
+  <option value="Caltanissetta">Caltanissetta</option>
+  <option value="Campobasso, Isernia">Campobasso, Isernia</option>
+  <option value="Caserta">Caserta</option>
+  <option value="Catania">Catania</option>
+  <option value="Catanzaro, Crotone, Vibo Valencia">Catanzaro, Crotone, Vibo Valencia</option>
+  <option value="Chieti">Chieti</option>
+  <option value="Como">Como</option>
+  <option value="Cosenza">Cosenza</option>
+  <option value="Cremona">Cremona</option>
+  <option value="Cuneo">Cuneo</option>
+  <option value="Enna">Enna</option>
+  <option value="Ferrara">Ferrara</option>
+  <option value="Firenze, Prato">Firenze, Prato</option>
+  <option value="Foggia">Foggia</option>
+  <option value="Forlì-Cesena">Forlì-Cesena</option>
+  <option value="Frosinone">Frosinone</option>
+  <option value="Genova">Genova</option>
+  <option value="Gorizia">Gorizia</option>
+  <option value="Grosseto">Grosseto</option>
+  <option value="L’Aquila">L’Aquila</option>
+  <option value="Latina">Latina</option>
+  <option value="Lecce">Lecce</option>
+  <option value="Lecco, Sondrio">Lecco, Sondrio</option>
+  <option value="Livorno">Livorno</option>
+  <option value="Lodi">Lodi</option>
+  <option value="Lucca">Lucca</option>
+  <option value="Macerata">Macerata</option>
+  <option value="Mantova">Mantova</option>
+  <option value="Massa-Carrara, La Spezia">Massa-Carrara, La Spezia</option>
+  <option value="Messina">Messina</option>
+  <option value="Milano, Monza-Brianza">Milano, Monza-Brianza</option>
+  <option value="Modena">Modena</option>
+  <option value="Napoli">Napoli</option>
+  <option value="Novara">Novara</option>
+  <option value="Nuoro">Nuoro</option>
+  <option value="Oristano, Sassari">Oristano, Sassari</option>
+  <option value="Padova">Padova</option>
+  <option value="Palermo">Palermo</option>
+  <option value="Parma">Parma</option>
+  <option value="Pavia">Pavia</option>
+  <option value="Perugia">Perugia</option>
+  <option value="Pesaro e Urbino">Pesaro e Urbino</option>
+  <option value="Pescara">Pescara</option>
+  <option value="Piacenza">Piacenza</option>
+  <option value="Pisa">Pisa</option>
+  <option value="Pistoia">Pistoia</option>
+  <option value="Pordenone">Pordenone</option>
+  <option value="Potenza, Matera">Potenza, Matera</option>
+  <option value="Ragusa">Ragusa</option>
+  <option value="Ravenna">Ravenna</option>
+  <option value="Reggio Calabria">Reggio Calabria</option>
+  <option value="Reggio Emilia">Reggio Emilia</option>
+  <option value="Rieti">Rieti</option>
+  <option value="Rimini">Rimini</option>
+  <option value="Roma">Roma</option>
+  <option value="Rovigo">Rovigo</option>
+  <option value="Salerno">Salerno</option>
+  <option value="Savona, Imperia">Savona, Imperia</option>
+  <option value="Siena">Siena</option>
+  <option value="Siracusa">Siracusa</option>
+  <option value="Teramo">Teramo</option>
+  <option value="Terni, Viterbo">Terni, Viterbo</option>
+  <option value="Torino">Torino</option>
+  <option value="Trapani">Trapani</option>
+  <option value="Trento">Trento</option>
+  <option value="Treviso">Treviso</option>
+  <option value="Trieste">Trieste</option>
+  <option value="Udine">Udine</option>
+  <option value="Varese">Varese</option>
+  <option value="Venezia">Venezia</option>
+  <option value="Verbano-Cusio-Ossola">Verbano-Cusio-Ossola</option>
+  <option value="Verona">Verona</option>
+  <option value="Vicenza">Vicenza</option>
+</select>
+
 <script>
-    // JavaScript for table search
-    const searchInput = document.getElementById('searchInput');
-    const tableRows = document.querySelectorAll('#dataTable tbody tr');
+document.getElementById('year-select').addEventListener('change', filterTable);
+document.getElementById('district-select').addEventListener('change', filterTable);
 
-    searchInput.addEventListener('input', function() {
-        const searchText = this.value.trim().toLowerCase();
+function filterTable() {
+  var selectedYear = document.getElementById('year-select').value;
+  var selectedDistrict = document.getElementById('district-select').value;
+  var rows = document.querySelectorAll('#data-table tbody tr');
 
-        tableRows.forEach(row => {
-            const rowText = row.textContent.trim().toLowerCase();
-            if (rowText.includes(searchText)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    });
+  rows.forEach(function(row) {
+    var anno = row.querySelector('td:nth-child(1)').textContent;
+    var district = row.querySelector('td:nth-child(2)').textContent;
+    if ((selectedYear === 'all' || anno === selectedYear) && (selectedDistrict === 'all' || district === selectedDistrict)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
 </script>
 
+</body>
 <input type="text" id="searchInput" placeholder="Search...">
 
-<table id="dataTable">
+<table id="data-table">
     <thead>
     <tr>
         <th>Cognome</th>
