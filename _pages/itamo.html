@@ -22,7 +22,6 @@ author_profile: true
 <label for="district-select">Seleziona Distretto:</label>
 <select id="district-select">
   <option value="all">Tutti</option>
-  <!-- List of Italian provinces -->
   <option value="Agrigento">Agrigento</option>
   <option value="Alessandria">Alessandria</option>
   <option value="Ancona">Ancona</option>
@@ -126,8 +125,8 @@ function filterTable() {
   var rows = document.querySelectorAll('#data-table tbody tr');
 
   rows.forEach(function(row) {
-    var anno = row.querySelector('td:nth-child(1)').textContent;
-    var district = row.querySelector('td:nth-child(2)').textContent;
+    var anno = row.querySelector('td:nth-child(14)').textContent;
+    var district = row.querySelector('td:nth-child(12)').textContent;
     if ((selectedYear === 'all' || anno === selectedYear) && (selectedDistrict === 'all' || district === selectedDistrict)) {
       row.style.display = '';
     } else {
@@ -138,7 +137,6 @@ function filterTable() {
 </script>
 
 </body>
-<input type="text" id="searchInput" placeholder="Search...">
 
 <table id="data-table">
     <thead>
