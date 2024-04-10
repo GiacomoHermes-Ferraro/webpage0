@@ -10,3 +10,56 @@ author_profile: true
 {% for post in site.teaching reversed %}
   {% include archive-single.html %}
 {% endfor %}
+
+<body>
+
+<label for="year-select">Select Year:</label>
+<select id="year-select">
+  <option value="all">All</option>
+  <option value="2023">2023</option>
+  <option value="2022">2022</option>
+  <option value="2021">2021</option>
+  <option value="2020">2020</option>
+</select>
+
+<table id="data-table">
+  <thead>
+    <tr>
+      <th>Anno</th>
+      <!-- Add other headers here -->
+      <th>Other Header 1</th>
+      <th>Other Header 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2023</td>
+      <td>Data 1</td>
+      <td>Data 2</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>Data 3</td>
+      <td>Data 4</td>
+    </tr>
+    <!-- Add more rows here -->
+  </tbody>
+</table>
+
+<script>
+document.getElementById('year-select').addEventListener('change', function() {
+  var year = this.value;
+  var rows = document.querySelectorAll('#data-table tbody tr');
+
+  rows.forEach(function(row) {
+    var anno = row.querySelector('td:first-child').textContent;
+    if (year === 'all' || anno === year) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+});
+</script>
+
+</body>
