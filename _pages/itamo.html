@@ -138,19 +138,27 @@ author_profile: true
   <option value="Viterbo">Viterbo</option>
 </select>
 
+<input type="text" id="search-input" placeholder="Cerca per Nome o Cognome">
+
 <script>
 document.getElementById('year-select').addEventListener('change', filterTable);
 document.getElementById('district-select').addEventListener('change', filterTable);
+document.getElementById('search-input').addEventListener('input', filterTable);
 
 function filterTable() {
   var selectedYear = document.getElementById('year-select').value;
   var selectedDistrict = document.getElementById('district-select').value;
+  var searchText = document.getElementById('search-input').value.toLowerCase();
   var rows = document.querySelectorAll('#data-table tbody tr');
 
   rows.forEach(function(row) {
-    var anno = row.querySelector('td:nth-child(14)').textContent;
-    var district = row.querySelector('td:nth-child(12)').textContent;
-    if ((selectedYear === 'all' || anno === selectedYear) && (selectedDistrict === 'all' || district === selectedDistrict)) {
+    var anno = row.querySelector('td:nth-child(1)').textContent;
+    var district = row.querySelector('td:nth-child(2)').textContent;
+    var nome = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+    var cognome = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+    if ((selectedYear === 'all' || anno === selectedYear) &&
+        (selectedDistrict === 'all' || district === selectedDistrict) &&
+        (nome.includes(searchText) || cognome.includes(searchText))) {
       row.style.display = '';
     } else {
       row.style.display = 'none';
