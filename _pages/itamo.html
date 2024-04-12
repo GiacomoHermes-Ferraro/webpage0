@@ -152,10 +152,10 @@ function filterTable() {
   var rows = document.querySelectorAll('#data-table tbody tr');
 
   rows.forEach(function(row) {
-    var anno = row.querySelector('td:nth-child(1)').textContent;
-    var district = row.querySelector('td:nth-child(2)').textContent;
-    var nome = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-    var cognome = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+    var anno = row.querySelector('td:nth-child(14)').textContent;
+    var district = row.querySelector('td:nth-child(12)').textContent;
+    var nome = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+    var cognome = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
     if ((selectedYear === 'all' || anno === selectedYear) &&
         (selectedDistrict === 'all' || district === selectedDistrict) &&
         (nome.includes(searchText) || cognome.includes(searchText))) {
