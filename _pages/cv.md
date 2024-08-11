@@ -49,5 +49,5 @@ Volunteering (Italian Mathematical Olympiads)
 * 2020--ongoing: Tutor for the students in the district of Avellino who qualified to the national stage
     * Awarded pupils: Mario Mazzarino (Bronze medal, 2022); Gaetano Laudando (Silver medal, 2023)
  
-<embed src="CV.pdf" width="800px" height="2100px"/>
+<embed src="_pages/CV.pdf" width="800px" height="2100px"/>
 
