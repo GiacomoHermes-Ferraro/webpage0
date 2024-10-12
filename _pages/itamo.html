@@ -170,22 +170,41 @@ function filterTable() {
 
 function sumPoints() {
   const district = document.getElementById("district-select").value;
-  const year = document.getElementById("year-select").value;
   const table = document.getElementById("data-table");
   const rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
-  let totalPoints = 0;
+  let totalPoints2024 = 0;
+  let totalPoints2023 = 0;
+  let totalPoints2022 = 0;
 
   for (let row of rows) {
     const districtCell = row.cells[11].innerText;
     const yearCell = row.cells[13].innerText;
     const pointsCell = parseFloat(row.cells[12].innerText);
 
-    if (districtCell === district && (yearCell === year || year === 'all')) {
-      totalPoints += pointsCell;
+    if (districtCell === district && (yearCell === 2024)) {
+      totalPoints2024 += pointsCell;
+    }
+  }
+    for (let row of rows) {
+    const districtCell = row.cells[11].innerText;
+    const yearCell = row.cells[13].innerText;
+    const pointsCell = parseFloat(row.cells[12].innerText);
+
+    if (districtCell === district && (yearCell === 2023)) {
+      totalPoints2023 += pointsCell;
+    }
+  }
+    for (let row of rows) {
+    const districtCell = row.cells[11].innerText;
+    const yearCell = row.cells[13].innerText;
+    const pointsCell = parseFloat(row.cells[12].innerText);
+
+    if (districtCell === district && (yearCell === 2022)) {
+      totalPoints2022 += pointsCell;
     }
   }
 
-  document.getElementById("result").innerText = `Punti totali di ${district}: ${totalPoints.toFixed(4)}`;
+  document.getElementById("result").innerText = `Punti totali di ${district} in 2024: ${totalPoints2024.toFixed(4)}\nPunti totali di ${district} in 2023: ${totalPoints2023.toFixed(4)}\nPunti totali di ${district} in 2022: ${totalPoints2022.toFixed(4)}`;
 }
 
 </script>
