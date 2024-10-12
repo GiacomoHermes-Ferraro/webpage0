@@ -180,7 +180,7 @@ function sumPoints() {
     const yearCell = row.cells[13].innerText;
     const pointsCell = parseFloat(row.cells[12].innerText);
 
-    if (districtCell === district && (yearCell === year || year === 'Anno')) {
+    if (districtCell === district && (yearCell === year || year === 'all')) {
       totalPoints += pointsCell;
     }
   }
