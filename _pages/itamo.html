@@ -16,6 +16,8 @@ author_profile: true
   In aggiunta ai punteggi - parziali e totali - dei partecipanti, è riportato il punteggio pesato per classe
   e la quota reale (ufficiosa) attribuita al distretto di appartenenza. 
 </p>
+
+
 <body>
 
 <style>
@@ -165,9 +167,31 @@ function filterTable() {
     }
   });
 }
+
+function sumPoints() {
+  const district = document.getElementById("district-select").value;
+  const table = document.getElementById("data-table");
+  const rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+  let totalPoints = 0;
+
+  for (let row of rows) {
+    const districtCell = row.cells[11].innerText;
+    const pointsCell = parseInt(row.cells[12].innerText, 10);
+
+    if (districtCell === district) {
+      totalPoints += pointsCell;
+    }
+  }
+
+  document.getElementById("result").innerText = `Total points for ${district}: ${totalPoints}`;
+}
+
 </script>
 
 </body>
+<button onclick="sumPoints()">Sum Points</button>
+
+
 <div style="max-height: 400px; overflow-y: auto;">
 <table id="data-table">
     <thead>
@@ -24336,3 +24360,5 @@ function filterTable() {
     </tbody>
 </table>
 </div>
+
+<div id="result"></div>
