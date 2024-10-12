@@ -170,20 +170,22 @@ function filterTable() {
 
 function sumPoints() {
   const district = document.getElementById("district-select").value;
+  const year = document.getElementById("year-select").value;
   const table = document.getElementById("data-table");
   const rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
   let totalPoints = 0;
 
   for (let row of rows) {
     const districtCell = row.cells[11].innerText;
+    const yearCell = row.cells[13].innerText;
     const pointsCell = parseFloat(row.cells[12].innerText);
 
-    if (districtCell === district) {
+    if (districtCell === district && (yearCell === year || year === 'Anno')) {
       totalPoints += pointsCell;
     }
   }
 
-  document.getElementById("result").innerText = `Total points for ${district}: ${totalPoints}`;
+  document.getElementById("result").innerText = `Punti totali di ${district}: ${totalPoints}`;
 }
 
 </script>
