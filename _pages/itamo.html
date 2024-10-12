@@ -181,7 +181,7 @@ function sumPoints() {
     const yearCell = row.cells[13].innerText;
     const pointsCell = parseFloat(row.cells[12].innerText);
 
-    if (districtCell === district && (yearCell === 2024)) {
+    if (districtCell === district && (yearCell === '2024')) {
       totalPoints2024 += pointsCell;
     }
   }
@@ -190,7 +190,7 @@ function sumPoints() {
     const yearCell = row.cells[13].innerText;
     const pointsCell = parseFloat(row.cells[12].innerText);
 
-    if (districtCell === district && (yearCell === 2023)) {
+    if (districtCell === district && (yearCell === '2023')) {
       totalPoints2023 += pointsCell;
     }
   }
@@ -199,7 +199,7 @@ function sumPoints() {
     const yearCell = row.cells[13].innerText;
     const pointsCell = parseFloat(row.cells[12].innerText);
 
-    if (districtCell === district && (yearCell === 2022)) {
+    if (districtCell === district && (yearCell === '2022')) {
       totalPoints2022 += pointsCell;
     }
   }
