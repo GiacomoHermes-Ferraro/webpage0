@@ -204,13 +204,16 @@ function sumPoints() {
     }
   }
 
-  document.getElementById("result").innerText = `Punti totali di ${district} in 2024: ${totalPoints2024.toFixed(4)}\nPunti totali di ${district} in 2023: ${totalPoints2023.toFixed(4)}\nPunti totali di ${district} in 2022: ${totalPoints2022.toFixed(4)}`;
+  document.getElementById("result").innerText = `Punti totali di ${district} nel 2024: ${totalPoints2024.toFixed(4)}\nPunti totali di ${district} nel 2023: ${totalPoints2023.toFixed(4)}\nPunti totali di ${district} nel 2022: ${totalPoints2022.toFixed(4)}`;
 }
 
 </script>
 
 </body>
 <button onclick="sumPoints()">Totale punti distretto</button>
+
+
+<div id="result"></div>
 
 
 <div style="max-height: 400px; overflow-y: auto;">
@@ -24382,4 +24385,3 @@ function sumPoints() {
 </table>
 </div>
 
-<div id="result"></div>
