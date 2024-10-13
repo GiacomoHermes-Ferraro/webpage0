@@ -175,14 +175,19 @@ function sumPoints() {
   let totalPoints2024 = 0;
   let totalPoints2023 = 0;
   let totalPoints2022 = 0;
+  let quoteBonus = 0;
 
   for (let row of rows) {
     const districtCell = row.cells[11].innerText;
     const yearCell = row.cells[13].innerText;
     const pointsCell = row.cells[12].innerText;
 
-    if (districtCell === district && (yearCell === '2024') && pointsCell!=='BONUS') {
-      totalPoints2024 += parseFloat(pointsCell);
+    if (districtCell === district && (yearCell === '2024')) {
+      if (pointsCell!=='BONUS'){
+        totalPoints2024 += parseFloat(pointsCell);
+      }
+      else{
+        quoteBonus +=1;
     }
   }
     for (let row of rows) {
@@ -204,7 +209,7 @@ function sumPoints() {
     }
   }
 
-  document.getElementById("result").innerText = `Punti totali di ${district} nel 2024: ${totalPoints2024.toFixed(4)}\nPunti totali di ${district} nel 2023: ${totalPoints2023.toFixed(4)}\nPunti totali di ${district} nel 2022: ${totalPoints2022.toFixed(4)}`;
+  document.getElementById("result").innerText = `Quote bonus di ${district} per il 2025: $quoteBonus\nPunti totali di ${district} nel 2024: ${totalPoints2024.toFixed(4)}\nPunti totali di ${district} nel 2023: ${totalPoints2023.toFixed(4)}\nPunti totali di ${district} nel 2022: ${totalPoints2022.toFixed(4)}`;
 }
 
 </script>
