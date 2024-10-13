@@ -179,28 +179,28 @@ function sumPoints() {
   for (let row of rows) {
     const districtCell = row.cells[11].innerText;
     const yearCell = row.cells[13].innerText;
-    const pointsCell = parseFloat(row.cells[12].innerText);
+    const pointsCell = row.cells[12].innerText;
 
-    if (districtCell === district && (yearCell === '2024')) {
-      totalPoints2024 += pointsCell;
+    if (districtCell === district && (yearCell === '2024') && pointsCell!=='BONUS') {
+      totalPoints2024 += parseFloat(pointsCell);
     }
   }
     for (let row of rows) {
     const districtCell = row.cells[11].innerText;
     const yearCell = row.cells[13].innerText;
-    const pointsCell = parseFloat(row.cells[12].innerText);
+    const pointsCell = row.cells[12].innerText;
 
-    if (districtCell === district && (yearCell === '2023')) {
-      totalPoints2023 += pointsCell;
+    if (districtCell === district && (yearCell === '2023') && pointsCell!=='BONUS') {
+      totalPoints2023 += parseFloat(pointsCell);
     }
   }
     for (let row of rows) {
     const districtCell = row.cells[11].innerText;
     const yearCell = row.cells[13].innerText;
-    const pointsCell = parseFloat(row.cells[12].innerText);
+    const pointsCell = row.cells[12].innerText;
 
-    if (districtCell === district && (yearCell === '2022')) {
-      totalPoints2022 += pointsCell;
+    if (districtCell === district && (yearCell === '2022') && pointsCell!=='BONUS') {
+      totalPoints2022 += parseFloat(pointsCell);
     }
   }
 
