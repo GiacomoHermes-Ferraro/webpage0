@@ -173,7 +173,7 @@ function filterTable() {
     const district = row.cells[11].textContent; // 12th column (index 11)
     const nome = row.cells[1].textContent.toLowerCase(); // 2nd column (index 1)
     const cognome = row.cells[0].textContent.toLowerCase(); // 1st column (index 0)
-    
+
     const matchesYear = selectedYear === 'all' || anno === selectedYear;
     const matchesDistrict = selectedDistrict === 'all' || district === selectedDistrict;
     const matchesSearch = nome.includes(searchText) || cognome.includes(searchText);
