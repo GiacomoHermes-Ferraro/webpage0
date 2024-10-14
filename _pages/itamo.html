@@ -144,6 +144,16 @@ author_profile: true
 
 <input type="text" id="search-input" placeholder="Cerca per Nome o Cognome">
 
+
+<div id="result"></div>
+
+
+
+
+<div style="max-height: 400px; overflow-y: auto;">
+    {% include table.html %}
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // Event listeners for filter inputs
@@ -204,14 +214,4 @@ function sumPoints() {
 </script>
 
 <button onclick="sumPoints()">Totale punti distretto</button>
-
-
-<div id="result"></div>
-
-
-
-
-<div style="max-height: 400px; overflow-y: auto;">
-    {% include table.html %}
-</div>
 </body>
