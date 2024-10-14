@@ -145,10 +145,12 @@ author_profile: true
 <input type="text" id="search-input" placeholder="Cerca per Nome o Cognome">
 
 <script>
-// Event listeners for filter inputs
-document.getElementById('year-select').addEventListener('change', filterTable);
-document.getElementById('district-select').addEventListener('change', filterTable);
-document.getElementById('search-input').addEventListener('input', filterTable);
+document.addEventListener('DOMContentLoaded', () => {
+  // Event listeners for filter inputs
+  document.getElementById('year-select').addEventListener('change', filterTable);
+  document.getElementById('district-select').addEventListener('change', filterTable);
+  document.getElementById('search-input').addEventListener('input', filterTable);
+});
 
 function filterTable() {
   const selectedYear = document.getElementById('year-select').value;
