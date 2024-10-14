@@ -181,35 +181,7 @@ function filterTable() {
   });
 }
 
-function sumPoints() {
-  const district = document.getElementById("district-select").value;
-  const rows = document.querySelectorAll("#data-table tbody tr");
 
-  let totalPoints = { '2024': 0, '2023': 0, '2022': 0 };
-  let quoteBonus = 0;
-
-  rows.forEach(row => {
-    const districtCell = row.cells[11].innerText; // 12th column
-    const yearCell = row.cells[13].innerText; // 14th column
-    const pointsCell = row.cells[12].innerText; // 13th column
-
-    if (districtCell === district) {
-      if (yearCell === '2024') {
-        if (pointsCell !== 'BONUS') {
-          totalPoints['2024'] += parseFloat(pointsCell) || 0; // Fallback to 0 if NaN
-        } else {
-          quoteBonus += 1;
-        }
-      } else if (yearCell === '2023' && pointsCell !== 'BONUS') {
-        totalPoints['2023'] += parseFloat(pointsCell) || 0;
-      } else if (yearCell === '2022' && pointsCell !== 'BONUS') {
-        totalPoints['2022'] += parseFloat(pointsCell) || 0;
-      }
-    }
-  });
-
-  document.getElementById("result").innerText = `Quote bonus di ${district} per il 2025: ${quoteBonus}\nPunti totali di ${district} nel 2024: ${totalPoints['2024'].toFixed(4)}\nPunti totali di ${district} nel 2023: ${totalPoints['2023'].toFixed(4)}\nPunti totali di ${district} nel 2022: ${totalPoints['2022'].toFixed(4)}`;
-}
 </script>
 
 <button onclick="sumPoints()">Totale punti distretto</button>
