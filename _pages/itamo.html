@@ -207,13 +207,9 @@ function sumPoints() {
 <div id="result"></div>
 
 
-<div style="max-height: 400px; overflow-y: auto;" id="table-container"></div>
-<script>
-    fetch('table.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('table-container').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading table:', error));
-</script>
+
+
+<div style="max-height: 400px; overflow-y: auto;">
+    {% include table.html %}
+</div>
 </body>
