@@ -288,6 +288,38 @@ function filterTable() {
 <button id="calculate-sum">Calcola Quote Distretto</button>
 <div id="sum-result"></div>
 
+
+
+
+
+<script>
+  document.getElementById('calculate-sum').addEventListener('click', calculateSum);
+
+  
+
+function calculateSum() {
+  const selectedDistrict = document.getElementById('district-select2').value;
+  const rows = document.querySelectorAll('#data-table tbody tr');
+  
+  let points2024 = 0;
+  let points2023 = 0;
+  let points2022 = 0;
+  let bonusshares = 0;
+
+  rows.forEach(row => {
+    const anno = row.cells[13].textContent; 
+    const district = row.cells[11].textContent; 
+    const points = row.cells[12].textContent;
+    
+
+    if (district === selectedDistrict) {
+      if (anno === '2024' && points !== 'BONUS') points2024 += parseFloat(points);
+      else if (anno === '2024' && points === 'BONUS') bonusshares += 1;
+      else if (anno === '2023' && points !== 'BONUS') points2023 += parseFloat(points);
+      else if (anno === '2022' && points !== 'BONUS') points2022 += parseFloat(points);
+    }
+  });
+
 const districtSchools = {
   "Agrigento": 14,
   "Alessandria": 10,
@@ -385,40 +417,6 @@ const districtSchools = {
 function getNumberOfSchools(district) {
   return districtSchools[district] || 0; // Returns 0 if the district is not found
 }
-
-const selectedDistrict = "Roma"; // Replace with actual selection
-const numberOfSchools = getNumberOfSchools(selectedDistrict);
-console.log(`Number of schools in ${selectedDistrict}: ${numberOfSchools}`);
-
-
-
-<script>
-  document.getElementById('calculate-sum').addEventListener('click', calculateSum);
-
-  
-
-function calculateSum() {
-  const selectedDistrict = document.getElementById('district-select2').value;
-  const rows = document.querySelectorAll('#data-table tbody tr');
-  
-  let points2024 = 0;
-  let points2023 = 0;
-  let points2022 = 0;
-  let bonusshares = 0;
-
-  rows.forEach(row => {
-    const anno = row.cells[13].textContent; 
-    const district = row.cells[11].textContent; 
-    const points = row.cells[12].textContent;
-    
-
-    if (district === selectedDistrict) {
-      if (anno === '2024' && points !== 'BONUS') points2024 += parseFloat(points);
-      else if (anno === '2024' && points === 'BONUS') bonusshares += 1;
-      else if (anno === '2023' && points !== 'BONUS') points2023 += parseFloat(points);
-      else if (anno === '2022' && points !== 'BONUS') points2022 += parseFloat(points);
-    }
-  });
   
 const numberOfSchools = getNumberOfSchools(selectedDistrict);
 
