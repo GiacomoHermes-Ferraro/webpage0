@@ -413,7 +413,6 @@ document.getElementById('district-select2').addEventListener('change', function 
   const numberOfSchools = getNumberOfSchools(selectedDistrict);
 
   if (selectedDistrict !== "all") {
-    // Update the output
     document.getElementById('sum-result').innerHTML = 
       `Numero di scuole nel distretto di ${selectedDistrict} nel 2024: ${numberOfSchools}/1376<br>` +
       `Quote bonus del distretto di ${selectedDistrict} per il 2025: ${bonusshares}<br>` +
