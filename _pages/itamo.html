@@ -34,47 +34,6 @@ author_profile: true
 </style>
 
 
-
-
-
-
-<div style="max-height: 400px; overflow-y: auto;">
-  {% include table.html %}
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Event listeners for filter inputs
-  document.getElementById('year-select').addEventListener('change', filterTable);
-  document.getElementById('district-select').addEventListener('change', filterTable);
-  document.getElementById('search-input').addEventListener('input', filterTable);
-});
-</script>
-
-<script>
-function filterTable() {
-  const selectedYear = document.getElementById('year-select').value;
-  const selectedDistrict = document.getElementById('district-select').value;
-  const searchText = document.getElementById('search-input').value.toLowerCase();
-  const rows = document.querySelectorAll('#data-table tbody tr');
-
-  rows.forEach(row => {
-    const anno = row.cells[13].textContent; // 14th column (index 13)
-    const district = row.cells[11].textContent; // 12th column (index 11)
-    const nome = row.cells[1].textContent.toLowerCase(); // 2nd column (index 1)
-    const cognome = row.cells[0].textContent.toLowerCase(); // 1st column (index 0)
-
-    console.log({ anno, district, nome, cognome });
-
-    const matchesYear = selectedYear === 'all' || anno === selectedYear;
-    const matchesDistrict = selectedDistrict === 'all' || district === selectedDistrict;
-    const matchesSearch = nome.includes(searchText) || cognome.includes(searchText);
-
-    row.style.display = (matchesYear && matchesDistrict && matchesSearch) ? '' : 'none';
-  });
-}
-</script>
-
 <div>
 <label for="year-select">Seleziona Anno:</label>
 <select id="year-select">
@@ -188,4 +147,40 @@ function filterTable() {
 </div>
 
 <input type="text" id="search-input" placeholder="Cerca per Nome o Cognome">
+
+
+<div style="max-height: 400px; overflow-y: auto;">
+  {% include table.html %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Event listeners for filter inputs
+  document.getElementById('year-select').addEventListener('change', filterTable);
+  document.getElementById('district-select').addEventListener('change', filterTable);
+  document.getElementById('search-input').addEventListener('input', filterTable);
+});
+</script>
+
+<script>
+function filterTable() {
+  const selectedYear = document.getElementById('year-select').value;
+  const selectedDistrict = document.getElementById('district-select').value;
+  const searchText = document.getElementById('search-input').value.toLowerCase();
+  const rows = document.querySelectorAll('#data-table tbody tr');
+
+  rows.forEach(row => {
+    const anno = row.cells[13].textContent; // 14th column (index 13)
+    const district = row.cells[11].textContent; // 12th column (index 11)
+    const nome = row.cells[1].textContent.toLowerCase(); // 2nd column (index 1)
+    const cognome = row.cells[0].textContent.toLowerCase(); // 1st column (index 0)
+    
+    const matchesYear = selectedYear === 'all' || anno === selectedYear;
+    const matchesDistrict = selectedDistrict === 'all' || district === selectedDistrict;
+    const matchesSearch = nome.includes(searchText) || cognome.includes(searchText);
+
+    row.style.display = (matchesYear && matchesDistrict && matchesSearch) ? '' : 'none';
+  });
+}
+</script>
 
