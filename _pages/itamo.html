@@ -414,16 +414,19 @@ const district_data = {
 };
 
 
-  const numero_scuole = district_data[selected_district].scuole;
+  const scuole = district_data[selected_district].scuole;
+  const quota_reale = district_data[selected_district].quota_reale;
+  const quota_effettiva = district_data[selected_district].quota_effettiva;
 
   if (selected_district !== "all") {
     document.getElementById('sum-result').innerHTML = 
-      `Numero di scuole nel distretto di ${selected_district} nel 2024: ${numero_scuole}/1376<br>` +
-      `Quote bonus del distretto di ${selected_district} per il 2025: ${bonusshares}/${allbonusshares}<br>` +
-      `Punti del distretto di ${selected_district}:<br>` +
-      `2024: ${points2024.toFixed(4)}/${allpoints2024.toFixed(4)}<br>` +
-      `2023: ${points2023.toFixed(4)}/${allpoints2023.toFixed(4)}<br>` +
-      `2022: ${points2022.toFixed(4)}/${allpoints2022.toFixed(4)}`;
+      `Il numero di scuole nel distretto di ${selected_district} era di: ${scuole} su un totale di 1376, nel 2024.<br>` +
+      `Le quote bonus per il 2025 sono ${bonusshares} su un totale di ${allbonusshares}.<br>` +
+      // `Punti del distretto di ${selected_district}:<br>` +
+      // `2024: ${points2024.toFixed(4)}/${allpoints2024.toFixed(4)}<br>` +
+      // `2023: ${points2023.toFixed(4)}/${allpoints2023.toFixed(4)}<br>` +
+      // `2022: ${points2022.toFixed(4)}/${allpoints2022.toFixed(4)}<br>` +
+      `La quota reale del distretto di ${selected_district} &mdash; ottenuta assumendo che il numero di scuole iscritte di ogni distretto rimanga invariato nel 2025 &mdash; è ${quota_reale}; il fattore di riscalamento necessario è riusltato essere 1,165. La quota effettiva di ${selected_district}, al netto di eventuali quote bonus, è la parte intera superiore della quota reale, ovvero ${quota_effettiva}`
   } else {
     document.getElementById('sum-result').innerHTML = "";
   }
