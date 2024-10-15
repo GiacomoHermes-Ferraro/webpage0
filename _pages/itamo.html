@@ -289,13 +289,9 @@ function filterTable() {
 <div id="sum-result"></div>
 
 
-
-
-
 <script>
-
 document.getElementById('district-select2').addEventListener('change', function () {
-  const selectedDistrict = document.getElementById('district-select2').value;
+  const selectedDistrict = this.value;
   const rows = document.querySelectorAll('#data-table tbody tr');
   
   let points2024 = 0;
@@ -307,7 +303,6 @@ document.getElementById('district-select2').addEventListener('change', function 
     const anno = row.cells[13].textContent; 
     const district = row.cells[11].textContent; 
     const points = row.cells[12].textContent;
-    
 
     if (district === selectedDistrict) {
       if (anno === '2024' && points !== 'BONUS') points2024 += parseFloat(points);
@@ -317,7 +312,7 @@ document.getElementById('district-select2').addEventListener('change', function 
     }
   });
 
-const districtSchools = {
+  const districtSchools = {
   "Agrigento": 14,
   "Alessandria": 10,
   "Ancona": 14,
@@ -409,21 +404,15 @@ const districtSchools = {
   "Verbano-Cusio-Ossola": 6,
   "Verona": 23,
   "Vicenza": 20,
-};
+  };
 
-function getNumberOfSchools(district) {
-  return districtSchools[district] || 0;
-}
-  
-const numberOfSchools = getNumberOfSchools(selectedDistrict)
-});
-  
-document.getElementById('district-select2').addEventListener('change', function() {
-  const selectedDistrict = this.value;
+  function getNumberOfSchools(district) {
+    return districtSchools[district] || 0;
+  }
+
+  const numberOfSchools = getNumberOfSchools(selectedDistrict);
 
   if (selectedDistrict !== "all") {
-    const numberOfSchools = districtSchools[selectedDistrict] || 0;
-
     // Update the output
     document.getElementById('sum-result').innerHTML = 
       `Numero di scuole nel distretto di ${selectedDistrict} nel 2024: ${numberOfSchools}/1376<br>` +
@@ -436,8 +425,5 @@ document.getElementById('district-select2').addEventListener('change', function(
     document.getElementById('sum-result').innerHTML = "";
   }
 });
-
-}
-
 </script>
 
