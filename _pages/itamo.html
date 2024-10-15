@@ -292,7 +292,7 @@ function filterTable() {
   document.getElementById('calculate-sum').addEventListener('click', calculateSum);
 
 function calculateSum() {
-  const selectedDistrict = document.getElementById('district-select').value;
+  const selectedDistrict = document.getElementById('district-select2').value;
   const rows = document.querySelectorAll('#data-table tbody tr');
   
   let points2024 = 0;
@@ -315,7 +315,7 @@ function calculateSum() {
   });
 
   document.getElementById('sum-result').textContent = 
-    `Quote bonus del distretto di ${selectedDistrict} nel 2025: \n`
+    `Quote bonus del distretto di ${selectedDistrict} nel 2025: ${bonus_shares}\n`
     `Punti del distretto di ${selectedDistrict}:\n` +
     `2024: ${points2024}\n` +
     `2023: ${points2023}\n` +
