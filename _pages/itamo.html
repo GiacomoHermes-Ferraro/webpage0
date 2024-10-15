@@ -207,7 +207,7 @@ function calculateSum() {
 
     if (district === selectedDistrict) {
       if (anno === '2024' && points !== 'BONUS') points2024 += parsefloat(points);
-      else if (anno === '2024' && points !== 'BONUS') bonus_shares += 1
+      else if (anno === '2024' && points === 'BONUS') bonus_shares += 1;
       else if (anno === '2023' && points !== 'BONUS') points2023 += parsefloat(points);
       else if (anno === '2022' && points !== 'BONUS') points2022 += parsefloat(points);
     }
