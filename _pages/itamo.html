@@ -164,7 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('district-select').addEventListener('change', filterTable);
   document.getElementById('search-input').addEventListener('input', filterTable);
 });
+</script>
 
+<script>
 function filterTable() {
   const selectedYear = document.getElementById('year-select').value;
   const selectedDistrict = document.getElementById('district-select').value;
@@ -186,5 +188,5 @@ function filterTable() {
     row.style.display = (matchesYear && matchesDistrict && matchesSearch) ? '' : 'none';
   });
 }
-
 </script>
+
