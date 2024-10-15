@@ -288,8 +288,114 @@ function filterTable() {
 <button id="calculate-sum">Calcola Quote Distretto</button>
 <div id="sum-result"></div>
 
+const districtSchools = {
+  "Agrigento": 14,
+  "Alessandria": 10,
+  "Ancona": 14,
+  "Aosta": 3,
+  "Arezzo": 8,
+  "Ascoli Piceno, Fermo": 11,
+  "Asti": 5,
+  "Avellino": 16,
+  "Bari": 40,
+  "Belluno": 6,
+  "Benevento": 9,
+  "Bergamo": 14,
+  "Biella, Vercelli": 6,
+  "Bologna": 21,
+  "Bolzano": 15,
+  "Brescia": 24,
+  "Brindisi, Taranto": 22,
+  "Cagliari": 17,
+  "Caltanissetta": 4,
+  "Campobasso & Isernia": 10,
+  "Caserta": 17,
+  "Catania": 23,
+  "Catanzaro, Crotone, Vibo Valentia": 16,
+  "Chieti": 14,
+  "Como": 13,
+  "Cosenza": 32,
+  "Cremona": 3,
+  "Cuneo": 7,
+  "Enna": 6,
+  "Ferrara": 5,
+  "Firenze, Prato": 24,
+  "Foggia": 26,
+  "Forlì-Cesena": 13,
+  "Frosinone": 13,
+  "Genova": 24,
+  "Gorizia": 5,
+  "Grosseto": 6,
+  "L’Aquila": 4,
+  "Latina": 17,
+  "Lecce": 22,
+  "Lecco & Sondrio": 9,
+  "Livorno": 7,
+  "Lodi": 4,
+  "Lucca": 11,
+  "Macerata": 9,
+  "Mantova": 7,
+  "Massa-Carrara, La Spezia": 9,
+  "Messina": 11,
+  "Milano, Monza-Brianza": 52,
+  "Modena": 15,
+  "Napoli": 73,
+  "Novara": 8,
+  "Nuoro": 5,
+  "Oristano, Sassari": 10,
+  "Padova": 17,
+  "Palermo": 21,
+  "Parma": 13,
+  "Pavia": 9,
+  "Perugia": 21,
+  "Pesaro e Urbino": 8,
+  "Pescara": 9,
+  "Piacenza": 5,
+  "Pisa": 10,
+  "Pistoia": 7,
+  "Pordenone": 7,
+  "Potenza & Matera": 16,
+  "Ragusa": 10,
+  "Ravenna": 3,
+  "Reggio Calabria": 7,
+  "Reggio Emilia": 12,
+  "Rieti": 6,
+  "Rimini": 11,
+  "Roma": 116,
+  "Rovigo": 6,
+  "Salerno": 25,
+  "Savona & Imperia": 9,
+  "Siena": 6,
+  "Siracusa": 11,
+  "Teramo": 7,
+  "Terni & Viterbo": 15,
+  "Torino": 56,
+  "Trapani": 7,
+  "Trento": 21,
+  "Treviso": 15,
+  "Trieste": 10,
+  "Udine": 18,
+  "Varese": 11,
+  "Venezia": 13,
+  "Verbano-Cusio-Ossola": 6,
+  "Verona": 23,
+  "Vicenza": 20,
+};
+
+function getNumberOfSchools(district) {
+  return districtSchools[district] || 0; // Returns 0 if the district is not found
+}
+
+const selectedDistrict = "Roma"; // Replace with actual selection
+const numberOfSchools = getNumberOfSchools(selectedDistrict);
+console.log(`Number of schools in ${selectedDistrict}: ${numberOfSchools}`);
+
+
+
 <script>
   document.getElementById('calculate-sum').addEventListener('click', calculateSum);
+
+  
 
 function calculateSum() {
   const selectedDistrict = document.getElementById('district-select2').value;
@@ -313,13 +419,12 @@ function calculateSum() {
       else if (anno === '2022' && points !== 'BONUS') points2022 += parseFloat(points);
     }
   });
-
-  console.log(selectedDistrict);
-  console.log(bonusshares);
-  console.log(points2024);
+  
+const numberOfSchools = getNumberOfSchools(selectedDistrict);
 
   document.getElementById('sum-result').textContent = 
-    `Quote bonus del distretto di ${selectedDistrict} nel 2025: ${bonusshares}\n` +
+    `Numero di scuole nel distretto di ${selectedDistrict} nel 2024: ${numberOfSchools}/1376`
+    `Quote bonus del distretto di ${selectedDistrict} per il 2025: ${bonusshares}\n` +
     `Punti del distretto di ${selectedDistrict}:\n` +
     `2024: ${points2024}\n` +
     `2023: ${points2023}\n` +
