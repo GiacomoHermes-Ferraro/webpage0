@@ -155,7 +155,6 @@ author_profile: true
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Event listeners for filter inputs
   document.getElementById('year-select').addEventListener('change', filterTable);
   document.getElementById('district-select').addEventListener('change', filterTable);
   document.getElementById('search-input').addEventListener('input', filterTable);
@@ -170,10 +169,10 @@ function filterTable() {
   const rows = document.querySelectorAll('#data-table tbody tr');
 
   rows.forEach(row => {
-    const anno = row.cells[13].textContent; // 14th column (index 13)
-    const district = row.cells[11].textContent; // 12th column (index 11)
-    const nome = row.cells[1].textContent.toLowerCase(); // 2nd column (index 1)
-    const cognome = row.cells[0].textContent.toLowerCase(); // 1st column (index 0)
+    const anno = row.cells[13].textContent;
+    const district = row.cells[11].textContent;
+    const nome = row.cells[1].textContent.toLowerCase();
+    const cognome = row.cells[0].textContent.toLowerCase();
     
     const matchesYear = selectedYear === 'all' || anno === selectedYear;
     const matchesDistrict = selectedDistrict === 'all' || district === selectedDistrict;
