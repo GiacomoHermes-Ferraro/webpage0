@@ -423,7 +423,7 @@ const district_data = {
     document.getElementById('sum-result').innerHTML = 
       `Il numero di scuole nel distretto di ${selected_district} era di: ${scuole} su un totale di 1376, nel 2024.<br>` +
       `Le quote bonus per il 2025 sono ${bonusshares} su un totale di ${allbonusshares}.<br>` +
-      `La quota reale del distretto di ${selected_district} &mdash; ottenuta assumendo che il numero di scuole iscritte di ogni distretto rimanga invariato nel 2025 &mdash; è ${quota_reale}; il fattore di riscalamento necessario è riusltato essere 1.165. La quota effettiva di ${selected_district}, al netto di eventuali quote bonus, è la parte intera superiore della quota reale, ovvero ${quota_effettiva}.<br>` +
+      `La quota reale del distretto di ${selected_district}, ottenuta assumendo che il numero di scuole iscritte di ogni distretto rimanga invariato nel 2025, è ${quota_reale}; il fattore di riscalamento necessario è riusltato essere 1.165. La quota effettiva di ${selected_district}, al netto di eventuali quote bonus, è la parte intera superiore della quota reale, ovvero ${quota_effettiva}.<br>` +
       `La variazione nel numero di scuole iscritte dal 2023 al 2024 è stato del +4% (da 1322 a 1376). Assumendo una variazione simile tra il 2024 e il 2025, è opportuno considerare un margine di errore nella quota reale del distretto di ${selected_district}` pari a circa ${errore_quota}.<br>` +
       `Inoltre, l'iscrizione di una scuola in più (o in meno) rispetto al 2024 determina una variazione della quota reale pari a circa 0.03.`;
   } else {
