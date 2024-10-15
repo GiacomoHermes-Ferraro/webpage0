@@ -293,11 +293,8 @@ function filterTable() {
 
 
 <script>
-  document.getElementById('calculate-sum').addEventListener('click', calculateSum);
 
-  
-
-function calculateSum() {
+document.getElementById('district-select2').addEventListener('change', function () {
   const selectedDistrict = document.getElementById('district-select2').value;
   const rows = document.querySelectorAll('#data-table tbody tr');
   
@@ -418,7 +415,8 @@ function getNumberOfSchools(district) {
   return districtSchools[district] || 0;
 }
   
-const numberOfSchools = getNumberOfSchools(selectedDistrict);
+const numberOfSchools = getNumberOfSchools(selectedDistrict)
+});
   
 document.getElementById('district-select2').addEventListener('change', function() {
   const selectedDistrict = this.value;
