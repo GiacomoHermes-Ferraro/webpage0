@@ -298,7 +298,7 @@ function calculateSum() {
   let points2024 = 0;
   let points2023 = 0;
   let points2022 = 0;
-  let bonus_shares = 0;
+  let bonusshares = 0;
 
   rows.forEach(row => {
     const anno = row.cells[13].textContent; 
@@ -308,18 +308,18 @@ function calculateSum() {
 
     if (district === selectedDistrict) {
       if (anno === '2024' && points !== 'BONUS') points2024 += parseFloat(points);
-      else if (anno === '2024' && points === 'BONUS') bonus_shares += 1;
+      else if (anno === '2024' && points === 'BONUS') bonusshares += 1;
       else if (anno === '2023' && points !== 'BONUS') points2023 += parseFloat(points);
       else if (anno === '2022' && points !== 'BONUS') points2022 += parseFloat(points);
     }
   });
 
   console.log(selectedDistrict);
-  console.log(bonus_shares);
+  console.log(bonusshares);
   console.log(points2024);
 
   document.getElementById('sum-result').textContent = 
-    `Quote bonus del distretto di ${selectedDistrict} nel 2025: ${bonus_shares}\n`
+    `Quote bonus del distretto di ${selectedDistrict} nel 2025: ${bonusshares}\n`
     `Punti del distretto di ${selectedDistrict}:\n` +
     `2024: ${points2024}\n` +
     `2023: ${points2023}\n` +
