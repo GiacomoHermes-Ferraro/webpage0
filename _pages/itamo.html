@@ -426,7 +426,8 @@ const district_data = {
       // `2024: ${points2024.toFixed(4)}/${allpoints2024.toFixed(4)}<br>` +
       // `2023: ${points2023.toFixed(4)}/${allpoints2023.toFixed(4)}<br>` +
       // `2022: ${points2022.toFixed(4)}/${allpoints2022.toFixed(4)}<br>` +
-      `La quota reale del distretto di ${selected_district} &mdash; ottenuta assumendo che il numero di scuole iscritte di ogni distretto rimanga invariato nel 2025 &mdash; è ${quota_reale}; il fattore di riscalamento necessario è riusltato essere 1,165. La quota effettiva di ${selected_district}, al netto di eventuali quote bonus, è la parte intera superiore della quota reale, ovvero ${quota_effettiva}`
+      `La quota reale del distretto di ${selected_district} &mdash; ottenuta assumendo che il numero di scuole iscritte di ogni distretto rimanga invariato nel 2025 &mdash; è ${quota_reale}; il fattore di riscalamento necessario è riusltato essere 1.165. La quota effettiva di ${selected_district}, al netto di eventuali quote bonus, è la parte intera superiore della quota reale, ovvero ${quota_effettiva}<br>` +
+      ``;
   } else {
     document.getElementById('sum-result').innerHTML = "";
   }
