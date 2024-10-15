@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 function filterTable() {
   const selectedYear = document.getElementById('year-select').value;
-  const selectedDistrict = document.getElementById('district-select').value;
+  const selected_district = document.getElementById('district-select').value;
   const searchText = document.getElementById('search-input').value.toLowerCase();
   const rows = document.querySelectorAll('#data-table tbody tr');
 
@@ -175,7 +175,7 @@ function filterTable() {
     const cognome = row.cells[0].textContent.toLowerCase();
     
     const matchesYear = selectedYear === 'all' || anno === selectedYear;
-    const matchesDistrict = selectedDistrict === 'all' || district === selectedDistrict;
+    const matchesDistrict = selected_district === 'all' || district === selected_district;
     const matchesSearch = nome.includes(searchText) || cognome.includes(searchText);
 
     row.style.display = (matchesYear && matchesDistrict && matchesSearch) ? '' : 'none';
@@ -289,7 +289,7 @@ function filterTable() {
 
 <script>
 document.getElementById('district-select2').addEventListener('change', function () {
-  const selectedDistrict = this.value;
+  const selected_district = this.value;
   const rows = document.querySelectorAll('#data-table tbody tr');
   
   let points2024 = 0;
@@ -311,7 +311,7 @@ document.getElementById('district-select2').addEventListener('change', function 
     else if (anno === '2023' && points !== 'BONUS') allpoints2023 += parseFloat(points);
     else if (anno === '2022' && points !== 'BONUS') allpoints2022 += parseFloat(points);
 
-    if (district === selectedDistrict) {
+    if (district === selected_district) {
       if (anno === '2024' && points !== 'BONUS') points2024 += parseFloat(points);
       else if (anno === '2024' && points === 'BONUS') bonusshares += 1;
       else if (anno === '2023' && points !== 'BONUS') points2023 += parseFloat(points);
@@ -319,111 +319,108 @@ document.getElementById('district-select2').addEventListener('change', function 
     }
   });
 
-  const districtSchools = {
-  "Agrigento": 14,
-  "Alessandria": 10,
-  "Ancona": 14,
-  "Aosta": 3,
-  "Arezzo": 8,
-  "Ascoli Piceno, Fermo": 11,
-  "Asti": 5,
-  "Avellino": 16,
-  "Bari": 40,
-  "Belluno": 6,
-  "Benevento": 9,
-  "Bergamo": 14,
-  "Biella, Vercelli": 6,
-  "Bologna": 21,
-  "Bolzano": 15,
-  "Brescia": 24,
-  "Brindisi, Taranto": 22,
-  "Cagliari": 17,
-  "Caltanissetta": 4,
-  "Campobasso, Isernia": 10,
-  "Caserta": 17,
-  "Catania": 23,
-  "Catanzaro, Crotone, Vibo Valentia": 16,
-  "Chieti": 14,
-  "Como": 13,
-  "Cosenza": 32,
-  "Cremona": 3,
-  "Cuneo": 7,
-  "Enna": 6,
-  "Ferrara": 5,
-  "Firenze, Prato": 24,
-  "Foggia": 26,
-  "Forlì-Cesena": 13,
-  "Frosinone": 13,
-  "Genova": 24,
-  "Gorizia": 5,
-  "Grosseto": 6,
-  "L’Aquila": 4,
-  "Latina": 17,
-  "Lecce": 22,
-  "Lecco, Sondrio": 9,
-  "Livorno": 7,
-  "Lodi": 4,
-  "Lucca": 11,
-  "Macerata": 9,
-  "Mantova": 7,
-  "Massa-Carrara, La Spezia": 9,
-  "Messina": 11,
-  "Milano, Monza-Brianza": 52,
-  "Modena": 15,
-  "Napoli": 73,
-  "Novara": 8,
-  "Nuoro": 5,
-  "Oristano, Sassari": 10,
-  "Padova": 17,
-  "Palermo": 21,
-  "Parma": 13,
-  "Pavia": 9,
-  "Perugia": 21,
-  "Pesaro e Urbino": 8,
-  "Pescara": 9,
-  "Piacenza": 5,
-  "Pisa": 10,
-  "Pistoia": 7,
-  "Pordenone": 7,
-  "Potenza, Matera": 16,
-  "Ragusa": 10,
-  "Ravenna": 3,
-  "Reggio Calabria": 7,
-  "Reggio Emilia": 12,
-  "Rieti": 6,
-  "Rimini": 11,
-  "Roma": 116,
-  "Rovigo": 6,
-  "Salerno": 25,
-  "Savona, Imperia": 9,
-  "Siena": 6,
-  "Siracusa": 11,
-  "Teramo": 7,
-  "Terni, Viterbo": 15,
-  "Torino": 56,
-  "Trapani": 7,
-  "Trento": 21,
-  "Treviso": 15,
-  "Trieste": 10,
-  "Udine": 18,
-  "Varese": 11,
-  "Venezia": 13,
-  "Verbano-Cusio-Ossola": 6,
-  "Verona": 23,
-  "Vicenza": 20,
-  };
+const district_data = {
+  "Agrigento": { scuole: 14, quota_reale: 0.6001, quota_effettiva: 1 },
+  "Alessandria": { scuole: 10, quota_reale: 1.4156, quota_effettiva: 2 },
+  "Ancona": { scuole: 14, quota_reale: 1.9382, quota_effettiva: 2 },
+  "Aosta": { scuole: 3, quota_reale: 1.3187, quota_effettiva: 2 },
+  "Arezzo": { scuole: 8, quota_reale: 0.8053, quota_effettiva: 1 },
+  "Ascoli Piceno, Fermo": { scuole: 11, quota_reale: 0.8599, quota_effettiva: 1 },
+  "Asti": { scuole: 5, quota_reale: 1.4314, quota_effettiva: 2 },
+  "Avellino": { scuole: 16, quota_reale: 1.8981, quota_effettiva: 2 },
+  "Bari": { scuole: 40, quota_reale: 4.9781, quota_effettiva: 5 },
+  "Belluno": { scuole: 6, quota_reale: 0.7966, quota_effettiva: 1 },
+  "Benevento": { scuole: 9, quota_reale: 0.9535, quota_effettiva: 1 },
+  "Bergamo": { scuole: 14, quota_reale: 4.1735, quota_effettiva: 5 },
+  "Biella, Vercelli": { scuole: 6, quota_reale: 1.3689, quota_effettiva: 2 },
+  "Bologna": { scuole: 21, quota_reale: 3.8825, quota_effettiva: 4 },
+  "Bolzano": { scuole: 15, quota_reale: 1.5425, quota_effettiva: 2 },
+  "Brescia": { scuole: 24, quota_reale: 10.3651, quota_effettiva: 11 },
+  "Brindisi, Taranto": { scuole: 22, quota_reale: 3.4884, quota_effettiva: 4 },
+  "Cagliari": { scuole: 17, quota_reale: 2.7817, quota_effettiva: 3 },
+  "Caltanissetta": { scuole: 4, quota_reale: 0.3910, quota_effettiva: 1 },
+  "Campobasso, Isernia": { scuole: 10, quota_reale: 1.5000, quota_effettiva: 2 },
+  "Caserta": { scuole: 17, quota_reale: 1.0697, quota_effettiva: 2 },
+  "Catania": { scuole: 23, quota_reale: 4.1075, quota_effettiva: 5 },
+  "Catanzaro, Crotone, Vibo Valentia": { scuole: 16, quota_reale: 1.2161, quota_effettiva: 2 },
+  "Chieti": { scuole: 14, quota_reale: 1.9840, quota_effettiva: 2 },
+  "Como": { scuole: 13, quota_reale: 2.4005, quota_effettiva: 3 },
+  "Cosenza": { scuole: 32, quota_reale: 1.1918, quota_effettiva: 2 },
+  "Cremona": { scuole: 3, quota_reale: 1.4191, quota_effettiva: 2 },
+  "Cuneo": { scuole: 7, quota_reale: 1.7907, quota_effettiva: 2 },
+  "Enna": { scuole: 6, quota_reale: 0.3875, quota_effettiva: 1 },
+  "Ferrara": { scuole: 5, quota_reale: 1.6775, quota_effettiva: 2 },
+  "Firenze, Prato": { scuole: 24, quota_reale: 6.7281, quota_effettiva: 7 },
+  "Foggia": { scuole: 26, quota_reale: 3.4380, quota_effettiva: 4 },
+  "Forlì-Cesena": { scuole: 13, quota_reale: 2.3007, quota_effettiva: 3 },
+  "Frosinone": { scuole: 13, quota_reale: 0.9770, quota_effettiva: 1 },
+  "Genova": { scuole: 24, quota_reale: 4.3932, quota_effettiva: 5 },
+  "Gorizia": { scuole: 5, quota_reale: 0.7043, quota_effettiva: 1 },
+  "Grosseto": { scuole: 6, quota_reale: 0.4989, quota_effettiva: 1 },
+  "L’Aquila": { scuole: 4, quota_reale: 0.1194, quota_effettiva: 1 },
+  "Latina": { scuole: 17, quota_reale: 2.1826, quota_effettiva: 3 },
+  "Lecce": { scuole: 22, quota_reale: 5.6689, quota_effettiva: 6 },
+  "Lecco, Sondrio": { scuole: 9, quota_reale: 2.9659, quota_effettiva: 3 },
+  "Livorno": { scuole: 7, quota_reale: 0.6421, quota_effettiva: 1 },
+  "Lodi": { scuole: 4, quota_reale: 0.8424, quota_effettiva: 1 },
+  "Lucca": { scuole: 11, quota_reale: 1.6824, quota_effettiva: 2 },
+  "Macerata": { scuole: 9, quota_reale: 1.0894, quota_effettiva: 2 },
+  "Mantova": { scuole: 7, quota_reale: 0.6444, quota_effettiva: 1 },
+  "Massa-Carrara, La Spezia": { scuole: 9, quota_reale: 6.1313, quota_effettiva: 7 },
+  "Messina": { scuole: 11, quota_reale: 0.4895, quota_effettiva: 1 },
+  "Milano, Monza-Brianza": { scuole: 52, quota_reale: 11.0064, quota_effettiva: 12 },
+  "Modena": { scuole: 15, quota_reale: 3.1255, quota_effettiva: 4 },
+  "Napoli": { scuole: 73, quota_reale: 6.5861, quota_effettiva: 7 },
+  "Novara": { scuole: 8, quota_reale: 0.6779, quota_effettiva: 1 },
+  "Nuoro": { scuole: 5, quota_reale: 0.4021, quota_effettiva: 1 },
+  "Oristano, Sassari": { scuole: 10, quota_reale: 0.9199, quota_effettiva: 1 },
+  "Padova": { scuole: 17, quota_reale: 7.9503, quota_effettiva: 8 },
+  "Palermo": { scuole: 21, quota_reale: 2.5003, quota_effettiva: 3 },
+  "Parma": { scuole: 13, quota_reale: 1.4219, quota_effettiva: 2 },
+  "Pavia": { scuole: 9, quota_reale: 4.1853, quota_effettiva: 5 },
+  "Perugia": { scuole: 21, quota_reale: 3.6569, quota_effettiva: 4 },
+  "Pesaro e Urbino": { scuole: 8, quota_reale: 2.3579, quota_effettiva: 3 },
+  "Pescara": { scuole: 9, quota_reale: 0.8441, quota_effettiva: 1 },
+  "Piacenza": { scuole: 5, quota_reale: 1.5246, quota_effettiva: 2 },
+  "Pisa": { scuole: 10, quota_reale: 4.2800, quota_effettiva: 5 },
+  "Pistoia": { scuole: 7, quota_reale: 1.4845, quota_effettiva: 2 },
+  "Pordenone": { scuole: 7, quota_reale: 1.7963, quota_effettiva: 2 },
+  "Potenza, Matera": { scuole: 16, quota_reale: 0.7643, quota_effettiva: 1 },
+  "Ragusa": { scuole: 10, quota_reale: 0.6544, quota_effettiva: 1 },
+  "Ravenna": { scuole: 3, quota_reale: 2.1257, quota_effettiva: 3 },
+  "Reggio Calabria": { scuole: 7, quota_reale: 0.5165, quota_effettiva: 1 },
+  "Reggio Emilia": { scuole: 12, quota_reale: 0.9411, quota_effettiva: 1 },
+  "Rieti": { scuole: 6, quota_reale: 1.8675, quota_effettiva: 2 },
+  "Rimini": { scuole: 11, quota_reale: 1.4324, quota_effettiva: 2 },
+  "Roma": { scuole: 116, quota_reale: 3.2954, quota_effettiva: 4 },
+  "Rovigo": { scuole: 6, quota_reale: 1.1768, quota_effettiva: 2 },
+  "Salerno": { scuole: 25, quota_reale: 2.4832, quota_effettiva: 3 },
+  "Savona, Imperia": { scuole: 9, quota_reale: 2.0427, quota_effettiva: 3 },
+  "Siena": { scuole: 6, quota_reale: 0.9304, quota_effettiva: 1 },
+  "Siracusa": { scuole: 11, quota_reale: 2.1601, quota_effettiva: 3 },
+  "Teramo": { scuole: 7, quota_reale: 0.8422, quota_effettiva: 1 },
+  "Terni, Viterbo": { scuole: 15, quota_reale: 3.7851, quota_effettiva: 4 },
+  "Torino": { scuole: 56, quota_reale: 4.2194, quota_effettiva: 5 },
+  "Trapani": { scuole: 7, quota_reale: 0.9665, quota_effettiva: 1 },
+  "Trento": { scuole: 21, quota_reale: 3.4235, quota_effettiva: 4 },
+  "Treviso": { scuole: 15, quota_reale: 1.5890, quota_effettiva: 2 },
+  "Trieste": { scuole: 10, quota_reale: 0.4458, quota_effettiva: 1 },
+  "Udine": { scuole: 18, quota_reale: 1.2784, quota_effettiva: 2 },
+  "Varese": { scuole: 11, quota_reale: 1.6311, quota_effettiva: 2 },
+  "Venezia": { scuole: 13, quota_reale: 2.4526, quota_effettiva: 3 },
+  "Verbano-Cusio-Ossola": { scuole: 6, quota_reale: 0.8733, quota_effettiva: 1 },
+  "Verona": { scuole: 23, quota_reale: 1.0122, quota_effettiva: 2 },
+  "Vicenza": { scuole: 20, quota_reale: 3.1152, quota_effettiva: 4 },
+};
 
-  function getNumberOfSchools(district) {
-    return districtSchools[district] || 0;
-  }
 
-  const numberOfSchools = getNumberOfSchools(selectedDistrict);
+  const numero_scuole = district_data[selected_district].scuole;
 
-  if (selectedDistrict !== "all") {
+  if (selected_district !== "all") {
     document.getElementById('sum-result').innerHTML = 
-      `Numero di scuole nel distretto di ${selectedDistrict} nel 2024: ${numberOfSchools}/1376<br>` +
-      `Quote bonus del distretto di ${selectedDistrict} per il 2025: ${bonusshares}/${allbonusshares}<br>` +
-      `Punti del distretto di ${selectedDistrict}:<br>` +
+      `Numero di scuole nel distretto di ${selected_district} nel 2024: ${numero_scuole}/1376<br>` +
+      `Quote bonus del distretto di ${selected_district} per il 2025: ${bonusshares}/${allbonusshares}<br>` +
+      `Punti del distretto di ${selected_district}:<br>` +
       `2024: ${points2024.toFixed(4)}/${allpoints2024.toFixed(4)}<br>` +
       `2023: ${points2023.toFixed(4)}/${allpoints2023.toFixed(4)}<br>` +
       `2022: ${points2022.toFixed(4)}/${allpoints2022.toFixed(4)}`;
