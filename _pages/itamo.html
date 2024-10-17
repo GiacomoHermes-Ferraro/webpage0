@@ -181,6 +181,34 @@ function filterTable() {
     row.style.display = (matchesYear && matchesDistrict && matchesSearch) ? '' : 'none';
   });
 }
+
+function sortTable(columnIndex) {
+    const table = document.getElementById("data-table");
+    const rows = Array.from(table.rows).slice(1); // Exclude header row
+
+    const isAscending = table.getAttribute('data-sort-order') === 'asc';
+    const direction = isAscending ? 1 : -1;
+
+    rows.sort((a, b) => {
+        const cellA = a.cells[columnIndex].textContent.trim();
+        const cellB = b.cells[columnIndex].textContent.trim();
+
+        // Handle numeric values
+        if (!isNaN(cellA) && !isNaN(cellB)) {
+            return direction * (parseFloat(cellA) - parseFloat(cellB));
+        }
+        // Handle text values
+        return direction * cellA.localeCompare(cellB);
+    });
+
+    // Re-attach sorted rows to the table body
+    const tbody = table.querySelector("tbody");
+    tbody.innerHTML = "";
+    rows.forEach(row => tbody.appendChild(row));
+
+    // Toggle sort order
+    table.setAttribute('data-sort-order', isAscending ? 'desc' : 'asc');
+}
 </script>
 
 <h2 style="font-size: 2em; font-weight: bold;">Calcolo quote per distretto</h2>
