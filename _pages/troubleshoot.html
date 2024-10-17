@@ -109,31 +109,25 @@ function sortTable(columnIndex) {
     const rows = Array.from(table.rows).slice(1);
     const isAscending = table.getAttribute('data-sort-order') === 'asc';
     const direction = isAscending ? 1 : -1;
-
-    // Define custom medal order
     const medalOrder = {
         "ORO": 1,
         "ARGENTO": 2,
         "BRONZO": 3,
         "MENZIONE": 4,
-        "": 5 // Blank is considered last
+        "": 5
     };
 
     rows.sort((a, b) => {
         const cellA = a.cells[columnIndex].textContent.trim();
         const cellB = b.cells[columnIndex].textContent.trim();
-
-        // Handle sorting based on the medal order
-        if (columnIndex === 3) { // Medal column
+        if (columnIndex === 3) {
             return direction * (medalOrder[cellA] - medalOrder[cellB]);
         }
 
-        // Handle numeric values
         if (!isNaN(cellA) && !isNaN(cellB)) {
             return direction * (parseFloat(cellA) - parseFloat(cellB));
         }
 
-        // Handle text values
         return direction * cellA.localeCompare(cellB);
     });
 
