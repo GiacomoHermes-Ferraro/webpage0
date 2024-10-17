@@ -198,13 +198,17 @@ function sortTable(columnIndex) {
         "": 5
     };
 
-    rows.sort((a, b) => {
+  rows.sort((a, b) => {
         const cellA = a.cells[columnIndex].textContent.trim();
         const cellB = b.cells[columnIndex].textContent.trim();
+        if (columnIndex === 9) {
+            return direction * (medalOrder[cellA] - medalOrder[cellB]);
+        }
 
         if (!isNaN(cellA) && !isNaN(cellB)) {
             return direction * (parseFloat(cellA) - parseFloat(cellB));
         }
+
         return direction * cellA.localeCompare(cellB);
     });
 
