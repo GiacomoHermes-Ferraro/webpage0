@@ -190,6 +190,13 @@ function sortTable(columnIndex) {
     const rows = Array.from(table.rows).slice(1);
     const isAscending = table.getAttribute('data-sort-order') === 'asc';
     const direction = isAscending ? 1 : -1;
+    const medalOrder = {
+        "ORO": 1,
+        "ARGENTO": 2,
+        "BRONZO": 3,
+        "MENZIONE": 4,
+        "": 5
+    };
 
     rows.sort((a, b) => {
         const cellA = a.cells[columnIndex].textContent.trim();
