@@ -91,7 +91,7 @@ function filterTable() {
 
         const matchesYear = selectedYear === 'all' || year === selectedYear;
         const matchesDistrict = selectedDistrict === 'all' || district === selectedDistrict;
-        const matchesSearch = nome.includes(searchText) || cognome.includes(searchText;
+        const matchesSearch = nome.includes(searchText) || cognome.includes(searchText);
 
         row.style.display = (matchesYear && matchesDistrict && matchesSearch) ? '' : 'none';
     });
