@@ -158,13 +158,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('year-select').addEventListener('change', filterTable);
   document.getElementById('district-select').addEventListener('change', filterTable);
   document.getElementById('search-input').addEventListener('input', filterTable);
-});
-</script>
 
-<script>
+  const headers = document.querySelectorAll('#data-table thead th');
+  headers.forEach((header, index) => {
+    header.addEventListener('click', () => sortTable(index));
+  });
+});
+
 function filterTable() {
   const selectedYear = document.getElementById('year-select').value;
-  const selected_district = document.getElementById('district-select').value;
+  const selectedDistrict = document.getElementById('district-select').value;
   const searchText = document.getElementById('search-input').value.toLowerCase();
   const rows = document.querySelectorAll('#data-table tbody tr');
 
@@ -173,9 +176,9 @@ function filterTable() {
     const district = row.cells[11].textContent;
     const nome = row.cells[1].textContent.toLowerCase();
     const cognome = row.cells[0].textContent.toLowerCase();
-    
+
     const matchesYear = selectedYear === 'all' || anno === selectedYear;
-    const matchesDistrict = selected_district === 'all' || district === selected_district;
+    const matchesDistrict = selectedDistrict === 'all' || district === selectedDistrict;
     const matchesSearch = nome.includes(searchText) || cognome.includes(searchText);
 
     row.style.display = (matchesYear && matchesDistrict && matchesSearch) ? '' : 'none';
@@ -185,7 +188,6 @@ function filterTable() {
 function sortTable(columnIndex) {
     const table = document.getElementById("data-table");
     const rows = Array.from(table.rows).slice(1);
-
     const isAscending = table.getAttribute('data-sort-order') === 'asc';
     const direction = isAscending ? 1 : -1;
 
@@ -193,13 +195,12 @@ function sortTable(columnIndex) {
         const cellA = a.cells[columnIndex].textContent.trim();
         const cellB = b.cells[columnIndex].textContent.trim();
 
-        // Handle numeric values
         if (!isNaN(cellA) && !isNaN(cellB)) {
             return direction * (parseFloat(cellA) - parseFloat(cellB));
         }
-        // Handle text values
         return direction * cellA.localeCompare(cellB);
     });
+
     const tbody = table.querySelector("tbody");
     tbody.innerHTML = "";
     rows.forEach(row => tbody.appendChild(row));
