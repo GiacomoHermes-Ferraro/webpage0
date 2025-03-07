@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "G.H.F.'s personal webpage"
 title_separator          : "-"
 name                     : &name "Giacomo Hermes Ferraro"
-description              : &description "Ph.D. student at Sapienza, Rome. Advisor: Federico Pellarin. Research topics: Drinfeld modules and Anderson modules."
+description              : &description "Postdoctoral researcher at Heidelberg University. Research topics: Drinfeld modules and Anderson modules."
 url                      : https://GiacomoHermes-Ferraro.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "GiacomoHermes-Ferraro/GiacomoHermes-Ferraro.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Giacomo Hermes Ferraro"
   avatar           : "Immagine_Profilo.png"
-  bio              : "I was born in Avellino, Italy, in 1997. I graduated from Scuola Normale Superiore in 2021. I'm currently a Ph.D. student at Sapienza under the supervision of Federico Pellarin."
+  bio              : "I was born in Avellino, Italy, in 1997. I graduated from Scuola Normale Superiore, Pisa, in 2021, and obtained my Ph.D at Sapienza, Rome, under the supervision of Federico Pellarin."
   location         : "Roma"
   employer         : "Università La Sapienza"
   pubmed           : 
