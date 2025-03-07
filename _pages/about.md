@@ -8,7 +8,9 @@ redirect_from:
   - /about.html
 ---
 
-I am a Math Ph.D. student at Sapienza Università di Roma. I graduated with honors at Scuola Normale Superiore, one of the most prestigious Italian universities, which I attended with a full scholarship. My research interests are Algebraic Geometry and Number Theory, with a particular focus on the theory of Anderson modules.
+I am a PostDoc in Mathematics at Heidelberg University. 
+My research interests are Algebraic Geometry and Number Theory, with a particular focus on the theory of Anderson modules.
+Outside of the university, I have been an advocate for developing the study of mathematics through the High School Math Olympiad in my hometown.
 
 
 For more info
