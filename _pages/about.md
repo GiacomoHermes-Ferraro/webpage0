@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a PostDoc in Mathematics at Heidelberg University. 
+I am a Visiting Assistant Professor at Texas A&M University. 
 My research interests are Algebraic Geometry and Number Theory, with a particular focus on the theory of Anderson modules.
 Outside of the university, I have been an advocate for developing the study of mathematics through the High School Math Olympiad in my hometown.
 
